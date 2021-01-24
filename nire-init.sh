@@ -8,7 +8,5 @@ cd
 git clone git@github.com:nirecom/dotfiles.git
 dotfiles/dotfileslink.sh
 
-./install/vim.sh
+#./install/vim.sh
 ./install/emacs.sh
-
-
