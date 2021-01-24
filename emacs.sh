@@ -1,8 +1,8 @@
 #!/bin/bash
 # Install emacs
 # ref. https://qiita.com/MasahiroBW/items/f263e7a3dcfe69ec0561
-if ! test emacs >/dev/null 2>&1; then
-    sudo apt install emacs
+if ! type emacs >/dev/null 2>&1; then
+    sudo apt install -y emacs
 fi
 if [ ! -d ~/tmp ]; then
     mkdir ~/tmp
