@@ -3,6 +3,7 @@ if [ `whoami` != "ubuntu" ]; then
    echo "run with ubuntu"
 fi
 sudo apt update && sudo apt -y upgrade
+sudo timedatectl set-timezone Asia/Tokyo
 # AllowAgentForwarding
 ./sshd.sh
 # Create user nire
