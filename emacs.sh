@@ -1,13 +1,16 @@
 #!/bin/bash
 # Install emacs
-# ref. https://qiita.com/MasahiroBW/items/f263e7a3dcfe69ec0561
 if ! type emacs >/dev/null 2>&1; then
-    sudo apt install -y emacs
+    if [ "$(uname)" == 'Darwin' ]; then
+        brew install emacs
+    elif [ "$(expr substr $(uname -s) 1 5)" == 'Linux' ]; then
+        # ref. https://qiita.com/MasahiroBW/items/f263e7a3dcfe69ec0561
+        sudo apt install -y emacs
+    else
+	echo "not supported OS. Install manually."
+    fi
 fi
-if [ ! -d ~/tmp ]; then
-    mkdir ~/tmp
-fi
-if [ ! -d ~/.emacs_backup ]; then
-    mkdir ~/.emacs_backup
-fi
+
+[ ! -d ~/tmp ] && mkdir ~/tmp
+[ ! -d ~/.emacs_backup ] && mkdir ~/.emacs_backup
 emacs --script ~/.emacs.d/packages/package-init.el
