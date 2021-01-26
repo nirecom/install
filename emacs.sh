@@ -17,3 +17,8 @@ fi
 if [ -f ~/.emacs.d/packages/package-init.el ]; then
     emacs --script ~/.emacs.d/packages/package-init.el
 fi
+
+# Support Copy & Paste at macos side
+if [ "$(uname)" == 'Darwin' ]; then
+    brew install reattach-to-user-namespace
+fi
