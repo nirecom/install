@@ -3,9 +3,9 @@
 if type tfenv >/dev/null 2>&1; then
     echo "tfenv exists. Skip ..."
 else
+    [ -d ~/.tfenv ] && rm -rf ~/.tfenv
     git clone https://github.com/tfutils/tfenv.git ~/.tfenv
     #echo 'export PATH="$HOME/.tfenv/bin:$PATH"' >> ~/.bash_profile
-    sudo ln -s ~/.tfenv/bin/* /usr/local/bin
 fi
 if type terraform >/dev/null 2>&1; then
     echo "terraform exists. Skip ..."
@@ -13,8 +13,9 @@ else
     tfenv install
     tfenv install 0.13.6
 # terraformer works with up to this version
-    tfenv use 0.13.6
+    tfenv use latest
 #    sudo apt install -y terraform=0.13.0
+    sudo ln -sf ~/.tfenv/bin/* /usr/local/bin
 fi
 if type terraformer >/dev/null 2>&1; then
     echo "terraformer exists. Skip ..." 
