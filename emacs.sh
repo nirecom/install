@@ -13,4 +13,7 @@ fi
 
 [ ! -d ~/tmp ] && mkdir ~/tmp
 [ ! -d ~/.emacs_backup ] && mkdir ~/.emacs_backup
-emacs --script ~/.emacs.d/packages/package-init.el
+
+if [ -f ~/.emacs.d/packages/package-init.el ]; then
+    emacs --script ~/.emacs.d/packages/package-init.el
+fi
