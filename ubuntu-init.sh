@@ -1,6 +1,8 @@
 #!/bin/bash
+# Initialize Ubuntu with default user ubuntu
 if [ `whoami` != "ubuntu" ]; then
-   echo "run with ubuntu"
+    echo "Run with user: ubuntu. Abort."
+    exit 1
 fi
 sudo apt update && sudo apt -y upgrade
 sudo timedatectl set-timezone Asia/Tokyo
