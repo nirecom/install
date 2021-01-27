@@ -7,6 +7,7 @@ if [ `whoami` != "nire" ]; then
     exit 1
 fi
 if [ ! -d ~/.ssh/config ]; then
+    ~/install/awscli.sh
     aws configure
     aws s3 cp --recursive s3://$BUCKET/.ssh ~/.ssh
     chmod +x ~/.ssh/ssh-add-all
@@ -17,5 +18,5 @@ if [ ! -d ~/dotfiles ]; then
     dotfiles/dotfileslink.sh
 fi
 
-./install/vim.sh
-./install/emacs.sh
+~/install/vim.sh
+~/install/emacs.sh
