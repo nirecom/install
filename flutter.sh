@@ -8,4 +8,4 @@ if ! type unzip /dev/null 2>&1; then
     fi
 fi
 unzip ~/flutter.zip
-export PATH="$PATH:$HOME/flutter/bin"
+export PATH="$PATH:$HOME/development/flutter/bin"
