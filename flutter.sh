@@ -27,6 +27,6 @@ echo "Installing CocoaPods for Xcode ..."
 sudo gem install cocoapods
 pod setup
 
-flutter doctor
 sudo xcode-select --switch /Applications/Xcode.app/Contents/Developer
 sudo xcodebuild -runFirstLaunch
+flutter doctor
