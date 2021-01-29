@@ -29,4 +29,8 @@ pod setup
 
 sudo xcode-select --switch /Applications/Xcode.app/Contents/Developer
 sudo xcodebuild -runFirstLaunch
+
+# Change channel, otherwise flutter doctor does not detect Android Studio plugin.
+# ref. https://stackoverflow.com/questions/52336654/android-studio-flutter-and-dart-plugins-not-recognized-by-flutter-doctor-but-p
+flutter channel beta
 flutter doctor
