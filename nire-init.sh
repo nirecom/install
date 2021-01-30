@@ -20,3 +20,4 @@ fi
 
 ~/install/vim.sh
 ~/install/emacs.sh
+~/install/source-highlight.sh
