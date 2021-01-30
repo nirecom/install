@@ -18,6 +18,7 @@ if [ ! -d ~/dotfiles ]; then
     dotfiles/dotfileslink.sh
 fi
 
+~/install/git-completion.sh
 ~/install/vim.sh
 ~/install/emacs.sh
 ~/install/source-highlight.sh
