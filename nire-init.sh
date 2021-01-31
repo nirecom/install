@@ -8,7 +8,10 @@ if [ `whoami` != "nire" ]; then
 fi
 
 [ ! -f /bin/zsh ] && sudo apt install -y zsh
-chsh -s $(which zsh)
+if [ $SHELL != "/bin/zsh" ]; then
+    echo "Changing shell to zsh. Enter password ..."
+    chsh -s $(which zsh)
+fi
 
 if [ ! -d ~/.ssh/config ]; then
     ~/install/awscli.sh
