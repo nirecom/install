@@ -7,7 +7,7 @@ if [ `whoami` != "nire" ]; then
     exit 1
 fi
 
-if [ ! -d ~/.ssh/config ]; then
+if [ ! -e ~/.ssh/config ]; then
     ~/install/awscli.sh
     aws configure
     aws s3 cp --recursive s3://$BUCKET/.ssh ~/.ssh

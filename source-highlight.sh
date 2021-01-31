@@ -1,4 +1,5 @@
 #!/bin/bash
+echo "Installing source-highlight ..."
 if [ "$(uname)" == 'Darwin' ]; then
     brew install source-highlight
 elif [ "$(expr substr $(uname -s) 1 5)" == 'Linux' ]; then

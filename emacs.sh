@@ -1,5 +1,6 @@
 #!/bin/bash
 # Install emacs
+echo "Installing emacs ..."
 if ! type emacs >/dev/null 2>&1; then
     if [ "$(uname)" == 'Darwin' ]; then
         brew install emacs

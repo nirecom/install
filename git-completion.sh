@@ -1,5 +1,6 @@
 #!/bin/bash
 # ref. https://blog.qnyp.com/2013/05/14/zsh-git-completion/
+echo "Installing git-completion ..."
 if [ ! -s ~/completion/git-comletion.bash ]; then
     mkdir -p ~/completion
     cd ~/completion

@@ -1,6 +1,8 @@
+#!/bin/bash
+echo "Installing vim ..."
 # pathogen
-[ ! -d ~/.vim/autoload ] && mkdir -p ~/.vim/autoload
-[ ! -d ~/.vim/bundle ] && mkdir -p ~/.vim/bundle
+mkdir -p ~/.vim/autoload
+mkdir -p ~/.vim/bundle
 curl -LSso ~/.vim/autoload/pathogen.vim https://tpo.pe/pathogen.vim
 cd ~/.vim/bundle
 # plugins
