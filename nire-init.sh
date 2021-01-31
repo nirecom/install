@@ -7,12 +7,6 @@ if [ `whoami` != "nire" ]; then
     exit 1
 fi
 
-[ ! -f /bin/zsh ] && sudo apt install -y zsh
-if [ $SHELL != "/bin/zsh" ]; then
-    echo "Changing shell to zsh. Enter password ..."
-    chsh -s $(which zsh)
-fi
-
 if [ ! -d ~/.ssh/config ]; then
     ~/install/awscli.sh
     aws configure
@@ -25,6 +19,7 @@ if [ ! -d ~/dotfiles ]; then
     dotfiles/dotfileslink.sh
 fi
 
+~/install/zsh.sh
 ~/install/git-completion.sh
 ~/install/vim.sh
 ~/install/emacs.sh
