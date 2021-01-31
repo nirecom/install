@@ -7,10 +7,12 @@ if [ `whoami` != "nire" ]; then
     exit 1
 fi
 
-if [ ! -e ~/.ssh/config ]; then
+# .ssh/config exists from scratch to git clone this install repository...
+#if [ ! -e ~/.ssh/config ]; then
+if [ ! -e ~/.ssh/ssh-add-all ]; then
     ~/install/awscli.sh
-    aws configure
     aws s3 cp --recursive s3://$BUCKET/.ssh ~/.ssh
+	chmod 400 ~/.ssh/id*
     chmod +x ~/.ssh/ssh-add-all
 fi
 if [ ! -d ~/dotfiles ]; then
