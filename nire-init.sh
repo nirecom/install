@@ -6,6 +6,10 @@ if [ `whoami` != "nire" ]; then
     echo "Run with user: nire. Abort."
     exit 1
 fi
+
+[ ! -f /bin/zsh ] && sudo apt install -y zsh
+chsh -s $(which zsh)
+
 if [ ! -d ~/.ssh/config ]; then
     ~/install/awscli.sh
     aws configure

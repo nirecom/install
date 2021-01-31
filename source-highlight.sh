@@ -2,7 +2,7 @@
 if [ "$(uname)" == 'Darwin' ]; then
     brew install source-highlight
 elif [ "$(expr substr $(uname -s) 1 5)" == 'Linux' ]; then
-    sudo apt install source-highlight
+    sudo apt install -y source-highlight
 else
     echo "Not supported OS. Abort."
     exit 1
