@@ -27,6 +27,6 @@ if [ -z $WSLENV ] && ! getent passwd $USERNAME >/dev/null 2>&1; then
     sudo gpasswd -a $USERNAME sudo
     sudo cp -pr ~/.ssh /home/$USERNAME/
     sudo chown -R $USERNAME:$USERNAME /home/$USERNAME/.ssh/
-    # Added it to sudoers
-    ./sudoers.sh
 fi
+# Added to sudoers
+./sudoers.sh
