@@ -12,10 +12,11 @@ if ! type emacs >/dev/null 2>&1; then
     fi
 fi
 
+echo "Creating tmp / backup folders ..."
 [ ! -d ~/tmp ] && mkdir ~/tmp
 [ ! -d ~/.emacs_backup ] && mkdir ~/.emacs_backup
 
-FPATH="$HOME/dotfiles/.emacs.d/package-init.el"
+FPATH="$HOME/dotfiles/.emacs.d/package-install.el"
 if [ -f $FPATH ]; then
     echo "Installing packages ..."
     emacs --script $FPATH
@@ -23,5 +24,6 @@ fi
 
 # Support Copy & Paste at macos side
 if [ "$(uname)" == 'Darwin' ]; then
+    echo "Installing reattach-to-user-namespace ..."
     brew install reattach-to-user-namespace
 fi
