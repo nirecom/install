@@ -15,8 +15,10 @@ fi
 [ ! -d ~/tmp ] && mkdir ~/tmp
 [ ! -d ~/.emacs_backup ] && mkdir ~/.emacs_backup
 
-if [ -f ~/.emacs.d/packages/package-init.el ]; then
-    emacs --script ~/.emacs.d/packages/package-init.el
+FPATH="$HOME/dotfiles/.emacs.d/package-init.el"
+if [ -f $FPATH ]; then
+    echo "Installing packages ..."
+    emacs --script $FPATH
 fi
 
 # Support Copy & Paste at macos side
