@@ -1,6 +1,8 @@
 #!/bin/bash
-USERNAME=nire
 # Initialize Ubuntu
+
+# Check current user name
+USERNAME=nire
 if [ -n $WSLENV ]; then
     if [ `whoami` != $USERNAME ]; then
         echo "It's WSL environment."
@@ -14,7 +16,10 @@ else
         exit 1
     fi
 fi
+
 sudo apt update && sudo apt -y upgrade
+sudo apt install -y language-pack-ja-base language-pack-ja
+#sudo apt ibus-mozc
 sudo timedatectl set-timezone Asia/Tokyo
 # AllowAgentForwarding
 ./sshd.sh
