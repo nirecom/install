@@ -8,7 +8,7 @@ if ! type emacs >/dev/null 2>&1; then
         # ref. https://qiita.com/MasahiroBW/items/f263e7a3dcfe69ec0561
         sudo apt install -y emacs
     else
-	echo "not supported OS. Install manually."
+    echo "not supported OS. Install manually."
     fi
 fi
 
