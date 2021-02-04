@@ -18,7 +18,7 @@ fi
 if [ ! -d ~/dotfiles ]; then
     cd
     git clone git@github.com:nirecom/dotfiles.git
-    dotfiles/dotfileslink.sh
+    dotfiles/bin/dotfileslink.sh
 fi
 
 ~/install/zsh.sh
