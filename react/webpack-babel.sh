@@ -13,3 +13,4 @@ sudo chown -R $(whoami) $(npm config get prefix)/{lib/node_modules,bin,share}
 npm install -g webpack webpack-cli
 npm install @babel/core @babel/preset-env @babel/preset-react babel-loader
 npm install --save-dev react react-dom
+npm install eslint
