@@ -1,5 +1,10 @@
 #!/bin/bash
 # AWS CLI
+if [ "$(expr substr $(uname -s) 1 5)" == 'MINGW' ]; then
+    echo "MINGW is not supported. Please install Windows installer manually."
+    exit 1
+fi
+
 if [ ! -d ~/awscli ]; then
     echo Creating directory ~/awscli .....
     mkdir ~/awscli
