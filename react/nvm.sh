@@ -25,3 +25,7 @@ else
     nvm alias default lts/*
     node -v
 fi
+if type eslint >/dev/null 2>&1; then
+    echo "eslint is already installed. Skip."
+    npm install -g eslint
+fi
