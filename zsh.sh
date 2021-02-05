@@ -10,6 +10,11 @@ if [ ! "`echo $SHELL | grep zsh`" ]; then
     echo "Changing shell to zsh. Enter password ..."
     chsh -s $(which zsh)
 fi
-if [ ! -e ~/.zsh/zsh-autosuggestions ]; then
-    git clone https://github.com/zsh-users/zsh-autosuggestions ~/.zsh/zsh-autosuggestions
+
+if [ ! -d $HOME/.zinit ]; then
+    sh -c "$(curl -fsSL https://raw.githubusercontent.com/zdharma/zinit/master/doc/install.sh)"
 fi
+
+#if [ ! -e ~/.zsh/zsh-autosuggestions ]; then
+#    git clone https://github.com/zsh-users/zsh-autosuggestions ~/.zsh/zsh-autosuggestions
+#fi
