@@ -25,9 +25,11 @@ else
     nvm alias default lts/*
     node -v
 fi
-if type eslint >/dev/null 2>&1; then
-    echo "eslint is already installed. Skip."
-else
-    npm install -g eslint
-    npm install -g eslint-plugin-react
-fi
+
+# should be installed locally e.g. npm install eslint
+#if type eslint >/dev/null 2>&1; then
+#    echo "eslint is already installed. Skip."
+#else
+#    npm install -g eslint
+#    npm install -g eslint-plugin-react
+#fi
