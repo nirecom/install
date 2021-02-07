@@ -12,7 +12,7 @@ fi
 if [ ! -e ~/.ssh/ssh-add-all ]; then
     ~/install/awscli.sh
     aws s3 cp --recursive s3://$BUCKET/.ssh ~/.ssh
-	chmod 400 ~/.ssh/id*
+    chmod 400 ~/.ssh/id*
     chmod +x ~/.ssh/ssh-add-all
 fi
 if [ ! -d ~/dotfiles ]; then
