@@ -22,13 +22,13 @@ if [ -f $INSTALLER ]; then
     emacs --script $INSTALLER
 fi
 
-echo "Git cloning tools ..."
-GDIR=$HOME/.emacs.d/git
-mkdir -p $GDIR
-cd $GDIR
-if [ ! -f git-complete.el ]; then
-    curl -L https://raw.githubusercontent.com/zk-phi/git-complete/master/git-complete.el -o git-complete.el
-fi
+#echo "Git cloning tools ..."
+#GDIR=$HOME/.emacs.d/git
+#mkdir -p $GDIR
+#cd $GDIR
+#if [ ! -f git-complete.el ]; then
+#    curl -L https://raw.githubusercontent.com/zk-phi/git-complete/master/git-complete.el -o git-complete.el
+#fi
 
 # Support Copy & Paste at macos side
 if [ "$(uname)" == 'Darwin' ]; then
