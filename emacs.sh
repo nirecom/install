@@ -16,10 +16,18 @@ echo "Creating tmp / backup folders ..."
 [ ! -d ~/tmp ] && mkdir ~/tmp
 [ ! -d ~/.emacs_backup ] && mkdir ~/.emacs_backup
 
-FPATH="$HOME/dotfiles/.emacs.d/package-install.el"
-if [ -f $FPATH ]; then
+INSTALLER="$HOME/dotfiles/.emacs.d/package-install.el"
+if [ -f $INSTALLER ]; then
     echo "Installing packages ..."
-    emacs --script $FPATH
+    emacs --script $INSTALLER
+fi
+
+echo "Git cloning tools ..."
+GDIR=$HOME/.emacs.d/git
+mkdir -p $GDIR
+cd $GDIR
+if [ ! -f git-complete.el ]; then
+    curl -L https://raw.githubusercontent.com/zk-phi/git-complete/master/git-complete.el -o git-complete.el
 fi
 
 # Support Copy & Paste at macos side
