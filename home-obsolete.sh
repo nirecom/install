@@ -21,3 +21,8 @@ if [ -d $GDIR ]; then
     echo "emacs: found git clone dir for non-packaged. Removing..."
     rm -r $HOME/.emacs.d/git
 fi
+
+if [ -d $HOME/.emacs.d/elpa/react-snippets-20181002.1046 ]; then
+    echo "react-snippet exists. Removing..."
+    rm -rf $HOME/.emacs.d/elpa/react-snippets-20181002.1046
+fi
