@@ -11,7 +11,7 @@ if "$ISWSL"; then
         exit 1
     fi
 else
-    echo "It's standard ubuntu environment."
+    echo "It's non-WSL environment."
     if [ "$OSDIST" = "ubuntu" ] && [ `whoami` != "ubuntu" ]; then
         echo "Run with user: ubuntu. Abort."
         exit 1

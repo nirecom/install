@@ -1,7 +1,7 @@
 #!/bin/bash
 source ./bin/detectos.sh
 
-if [ "$OSDIST" = "mingw" ] || $ISWSL; then
+if [ "$OSDIST" = "mingw" ] || "$ISWSL"; then
     echo "no /etc/ssh. Abort."
     exit 1
 fi
@@ -13,4 +13,16 @@ if [ $? -gt 0 ]; then
     sudo sh -c 'echo "#nn Added by sshd.sh" >>/etc/ssh/sshd_config'
     sudo sh -c 'echo "AllowAgentForwarding yes" >>/etc/ssh/sshd_config'
 fi
-sudo systemctl restart ssh
+echo "Restarting sshd"
+case "$OSDIST" in
+    "ubuntu" ) sudo systemctl restart ssh ;;
+    "amazon" ) 
+        echo "Amazon Linux..."
+        if grep "Amazon Linux 2" /etc/system-release >/dev/null 2>&1; then
+            echo "Detected Amazon linux 2..."
+            sudo systemctl restart ssh
+        else
+            sudo service sshd restart
+        fi
+        ;;
+esac
