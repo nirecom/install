@@ -1,6 +1,10 @@
 #!/bin/bash
 # Install emacs
 source ./bin/detectos.sh
+if [ "$OSDIST" = "amazon" ]; then
+        echo "Amazon Linux supports older emacs only. Abort."
+        exit 1
+fi
 
 echo "Installing emacs ..."
 if ! type emacs >/dev/null 2>&1; then
@@ -9,10 +13,9 @@ if ! type emacs >/dev/null 2>&1; then
     elif [ "$OSDIST" = "ubuntu" ]; then
         # ref. https://qiita.com/MasahiroBW/items/f263e7a3dcfe69ec0561
         sudo apt install -y emacs
-    elif [ "$OSDIST" = "amazon" ]; then
-        sudo yum install -y emacs
     else
         echo "not supported OS. Install manually."
+        exit 1
     fi
 fi
 
