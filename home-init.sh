@@ -1,5 +1,6 @@
 #!/bin/bash
 # Initializa User: nire
+
 BUCKET=nirecom-home
 
 if [ `whoami` != "nire" ]; then

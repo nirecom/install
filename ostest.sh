@@ -1,5 +1,4 @@
 #!/bin/bash
-
 source ./bin/detectos.sh
 
 echo OSDIST=$OSDIST

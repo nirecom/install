@@ -1,14 +1,18 @@
 #!/bin/bash
 # Install emacs
+source ./bin/detectos.sh
+
 echo "Installing emacs ..."
 if ! type emacs >/dev/null 2>&1; then
-    if [ "$(uname)" == 'Darwin' ]; then
+    if [ "$OSDIST" = "macos" ]; then
         brew install emacs
-    elif [ "$(expr substr $(uname -s) 1 5)" == 'Linux' ]; then
+    elif [ "$OSDIST" = "ubuntu" ]; then
         # ref. https://qiita.com/MasahiroBW/items/f263e7a3dcfe69ec0561
         sudo apt install -y emacs
+    elif [ "$OSDIST" = "amazon" ]; then
+        sudo yum install -y emacs
     else
-    echo "not supported OS. Install manually."
+        echo "not supported OS. Install manually."
     fi
 fi
 
@@ -31,7 +35,7 @@ fi
 #fi
 
 # Support Copy & Paste at macos side
-if [ "$(uname)" == 'Darwin' ]; then
+if [ "$OSDIST" = "macos" ]; then
     echo "Installing reattach-to-user-namespace ..."
     brew install reattach-to-user-namespace
 fi

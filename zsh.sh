@@ -1,7 +1,9 @@
 #!/bin/bash
+source ./bin/detectos.sh
+
 echo "Installing zsh ..."
-if [[ "$(uname)" != 'Darwin' ]] && [[ "$(expr substr $(uname -s) 1 5)" != 'Linux' ]]; then
-    echo "Not supported OS. Abort."
+if [ "$OSDIST" = "mingw" ]; then
+    echo "mingw does not support zsh. Abort."
     exit 1
 fi
 
@@ -14,7 +16,3 @@ fi
 if [ ! -d $HOME/.zinit ]; then
     sh -c "$(curl -fsSL https://raw.githubusercontent.com/zdharma/zinit/master/doc/install.sh)"
 fi
-
-#if [ ! -e ~/.zsh/zsh-autosuggestions ]; then
-#    git clone https://github.com/zsh-users/zsh-autosuggestions ~/.zsh/zsh-autosuggestions
-#fi
