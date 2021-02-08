@@ -5,7 +5,7 @@ Automated installation scripts of OS configuration, necessary tools (e.g. awscli
 * How it works
 
     * These files are intended to place under ~/install.
-    * On cleaned install OS, install initially with sequential init scripts (ubuntu-init.sh, nire-init.sh). They invoke small scripts to setup each packages / tools.
+    * On cleaned install OS, install initially with sequential init scripts (os-init.sh, nire-init.sh). They invoke small scripts to setup each packages / tools.
     * Or, you can run each script independently.
 
 * System Requirement
@@ -21,6 +21,10 @@ Automated installation scripts of OS configuration, necessary tools (e.g. awscli
     * git clone git@github.com:nirecom/install.git
     * cd install
     * You need to change $USERNAME to your local account name.
-    * ./ubuntu-init.sh
+    * ./os-init.sh
     * login with user account
-    * ./nire-init.sh
+    * ./home-init.sh
+
+* Cleanup obsolete files
+    * ./home-obsolete.sh
+        * This cleans files that are not used now.
