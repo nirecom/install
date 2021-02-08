@@ -1,10 +1,10 @@
 #!/bin/bash
 # Detect OS distribution
 
-if [ -n $WSLENV ]; then
+if [ -e /proc/sys/fs/binfmt_misc/WSLInterop ]; then
     ISWSL=true
 else
-    ISWSL=
+    ISWSL=false
 fi
 
 if [[ "$(uname)" == 'Darwin' ]]; then
