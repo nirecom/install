@@ -20,7 +20,7 @@ if [ ! -e /bin/zsh ]; then
 fi
 if [ ! "`echo $SHELL | grep zsh`" ]; then
     echo "Changing shell to zsh. Enter password ..."
-    sudo chsh -s $(which zsh)
+    chsh -s $(which zsh)
 fi
 
 if [ ! -d $HOME/.zinit ]; then
