@@ -7,10 +7,20 @@ if [ "$OSDIST" = "mingw" ]; then
     exit 1
 fi
 
-[ ! -e /bin/zsh ] && sudo apt install -y zsh
+if [ ! -e /bin/zsh ]; then
+    case "$OSDIST" in
+        "ubuntu" )
+            sudo apt install -y zsh ;;
+        "amazon" )
+            sudo yum install -y zsh util-linux-user ;;
+        "*" )
+            echo "Not supported Linux. Abort."
+            exit 1
+    esac
+fi
 if [ ! "`echo $SHELL | grep zsh`" ]; then
     echo "Changing shell to zsh. Enter password ..."
-    chsh -s $(which zsh)
+    sudo chsh -s $(which zsh)
 fi
 
 if [ ! -d $HOME/.zinit ]; then
