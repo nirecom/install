@@ -22,7 +22,12 @@ if [ -d $GDIR ]; then
     rm -r $HOME/.emacs.d/git
 fi
 
-if [ -d $HOME/.emacs.d/elpa/react-snippets-20181002.1046 ]; then
-    echo "react-snippet exists. Removing..."
-    rm -rf $HOME/.emacs.d/elpa/react-snippets-20181002.1046
+#if [ -d $HOME/.emacs.d/elpa/react-snippets-20181002.1046 ]; then
+#    echo "react-snippet exists. Removing..."
+#    rm -rf $HOME/.emacs.d/elpa/react-snippets-20181002.1046
+#fi
+
+if [ -d $HOME/.emacs.d/elpa/js-react-redux-yasnippets-20200316.1144 ]; then
+    echo "js-react-redux-yasnippets exists. Removing..."
+    rm -rf $HOME/.emacs.d/elpa/js-react-redux-yasnippets-20200316.1144
 fi
