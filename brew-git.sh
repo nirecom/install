@@ -25,6 +25,6 @@ fi
 
 # two dependencies of git
 # https://github.com/Homebrew/discussions/discussions/439
-brew reinstall gettext pcre2
+#brew reinstall gettext pcre2
 
 brew install git
