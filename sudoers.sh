@@ -1,9 +1,11 @@
 #!/bin/bash
 source ./bin/detectos.sh
 
-# Allow the user to run sudo without password
 FILENAME="/etc/sudoers.d/nirecom-users"
 if [ ! -f /etc/sudoers.d/nirecom-users ]; then
+    echo "Need to allow the user to run sudo without password."
+    echo "Configuretion *may* require to enter password once."
+
     sudo sh -c 'echo "nire    ALL=(ALL) NOPASSWD: ALL" >/etc/sudoers.d/nirecom-users'
     sudo chmod 440 $FILENAME
     if [ "$OSDIST" = "macos" ]; then

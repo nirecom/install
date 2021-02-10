@@ -11,45 +11,52 @@ if "$ISWSL"; then
         exit 1
     fi
 else
-    echo "It's non-WSL environment."
-    if [ "$OSDIST" = "ubuntu" ] && [ `whoami` != "ubuntu" ]; then
-        echo "Run with user: ubuntu. Abort."
-        exit 1
-    fi
-    if [ `whoami` != "ec2-user" ]; then
-        echo "Run with user: ec2-user. Abort."
-        exit 1
-    fi
-fi
-
-if [ "$OSDIST" = "ubuntu" ]; then
-    sudo apt update && sudo apt -y upgrade
-    sudo apt install -y language-pack-ja-base language-pack-ja
-    #sudo apt ibus-mozc
-    if ! $ISWSL; then
-        sudo timedatectl set-timezone Asia/Tokyo
-    fi
-fi
-
-# AllowAgentForwarding
-./sshd.sh
-# Install awscli and ecscli
-./awscli.sh
-if ! $ISWSL && ! getent passwd $USERNAME >/dev/null 2>&1; then
-    # Create user
-    echo "Creating user $USERNAME ..."
     case "$OSDIST" in
         "ubuntu" )
+            if [ `whoami` != "ubuntu" ]; then
+                echo "Run with user: ubuntu. Abort."
+                exit 1
+            fi
+            break ;;
+        "amazon" )
+            if [ `whoami` != "ec2-user" ]; then
+                echo "Run with user: ec2-user. Abort."
+                exit 1
+            fi
+    esac
+fi
+
+# Update Packages, Create $USERNAME
+case "$OSDIST" in
+    "ubuntu" )
+        sudo apt update && sudo apt -y upgrade
+        sudo apt install -y language-pack-ja-base language-pack-ja
+        #sudo apt ibus-mozc
+        if ! $ISWSL; then
+            sudo timedatectl set-timezone Asia/Tokyo
+        fi
+        ./sshd.sh
+        if ! $ISWSL && ! getent passwd $USERNAME >/dev/null 2>&1; then
+            echo "Creating user $USERNAME ..."
             sudo adduser $USERNAME
             sudo gpasswd -a $USERNAME sudo
-            ;;
-        "amazon" )
+            sudo cp -pr ~/.ssh /home/$USERNAME/
+            sudo chown -R $USERNAME:$USERNAME /home/$USERNAME/.ssh/
+        fi
+        break
+        ;;
+    "amazon" )
+        sudo yum -y update
+        ./sshd.sh
+        if ! getent passwd $USERNAME >/dev/null 2>&1; then
+            echo "Creating user $USERNAME ..."
             sudo useradd $USERNAME
             sudo usermod -G wheel $USERNAME
-            ;;
-    esac
-    sudo cp -pr ~/.ssh /home/$USERNAME/
-    sudo chown -R $USERNAME:$USERNAME /home/$USERNAME/.ssh/
-fi
+            sudo cp -pr ~/.ssh /home/$USERNAME/
+            sudo chown -R $USERNAME:$USERNAME /home/$USERNAME/.ssh/
+        fi
+esac
+
 # Added to sudoers
 ./sudoers.sh
+
