@@ -10,21 +10,8 @@ if [ `whoami` != "$USERNAME" ]; then
     exit 1
 fi
 
-# Install Brew on macos
-BREWPATH=/opt/homebrew/bin/brew
-if [ "$OSDIST" = "macos" ]; then
-    if [ ! -e "$BREWPATH"  ]; then
-        /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-    fi
-    if [ ! grep "$BREWPATH" $HOME/.profile >/dev/null 2&>1 ]; then
-        echo 'eval $(/opt/homebrew/bin/brew shellenv)' >>$HOME/.profile
-    fi
-    if [ ! grep "$BREWPATH" $HOME/.profile >/dev/null 2&>1 ]; then
-        echo 'eval $(/opt/homebrew/bin/brew shellenv)' >>$HOME/.zprofile
-    fi
-    eval $(/opt/homebrew/bin/brew shellenv)
-fi
-
+# Install brew and git on macos (if not macos, will be skipped)
+~/install/brew-git.sh
 # Install aws cli
 ~/install/awscli.sh
 

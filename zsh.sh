@@ -23,6 +23,7 @@ if [ ! "`echo $SHELL | grep zsh`" ]; then
     chsh -s $(which zsh)
 fi
 
+# Install zinit, package manager
 if [ ! -d $HOME/.zinit ]; then
     sh -c "$(curl -fsSL https://raw.githubusercontent.com/zdharma/zinit/master/doc/install.sh)"
 fi

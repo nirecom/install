@@ -8,15 +8,20 @@ fi
 
 echo "Installing emacs ..."
 if ! type emacs >/dev/null 2>&1; then
-    if [ "$OSDIST" = "macos" ]; then
-        brew install emacs
-    elif [ "$OSDIST" = "ubuntu" ]; then
-        # ref. https://qiita.com/MasahiroBW/items/f263e7a3dcfe69ec0561
-        sudo apt install -y emacs
-    else
-        echo "not supported OS. Install manually."
-        exit 1
-    fi
+    case "$OSDIST" in
+        "macos" )
+            brew install emacs
+            # Support Copy & Paste at macos side
+            brew install reattach-to-user-namespace
+            ;;
+        "ubuntu" )
+            # ref. https://qiita.com/MasahiroBW/items/f263e7a3dcfe69ec0561
+            sudo apt install -y emacs
+            ;;
+        * )
+            echo "not supported OS. Install manually."
+            exit 1
+    esac
 fi
 
 echo "Creating tmp / backup folders ..."
@@ -37,8 +42,3 @@ fi
 #    curl -L https://raw.githubusercontent.com/zk-phi/git-complete/master/git-complete.el -o git-complete.el
 #fi
 
-# Support Copy & Paste at macos side
-if [ "$OSDIST" = "macos" ]; then
-    echo "Installing reattach-to-user-namespace ..."
-    brew install reattach-to-user-namespace
-fi
