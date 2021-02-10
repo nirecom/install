@@ -51,7 +51,7 @@ if type ecs-cli >/dev/null 2>&1; then
     echo "ecs-cli exists. Skipping install ..."
 else
     echo "Install ecs-cli ..."
-    cd ~/awscli
+#    cd ~/awscli
     case "$OSDIST" in
         "macos" )
             sudo curl -Lo /usr/local/bin/ecs-cli https://amazon-ecs-cli.s3.amazonaws.com/ecs-cli-darwin-amd64-latest
