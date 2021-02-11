@@ -7,6 +7,9 @@ if [ "$OSDIST" != "macos" ]; then
     exit 1
 fi
 
+echo "Installing Rosetta..."
+softwareupdate --install-rosetta --agree-to-license
+
 # Install Brew on macos
 if ! type brew >/dev/null 2>&1; then
     /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"

@@ -22,15 +22,16 @@ if ! type rbenv >/dev/null 2>&1; then
             brew install rbenv ruby-build
             ;;
         * )
-            echo "Not on Ubuntu. Skip."
+            echo "Not supported. Skip."
             exit 1
     esac
+fi
 
-    # Install latest stable version of ruby
-    # ref. https://mawatari.jp/archives/install-latest-stable-version-of-ruby-using-rbenv
-    # note: It did not work well: `rbenv install -l | grep -v - | tail -1`
-    RBVER=$(rbenv install -l | sed -n '/^[[:space:]]*[0-9]\{1,\}\.[0-9]\{1,\}\.[0-9]\{1,\}[[:space:]]*$/ h;${g;p;}')
-    rbenv install $RBVER
-    rbenv global $RBVER
+# Install latest stable version of ruby
+# ref. https://mawatari.jp/archives/install-latest-stable-version-of-ruby-using-rbenv
+# note: It did not work well: `rbenv install -l | grep -v - | tail -1`
+RBVER=$(rbenv install -l | sed -n '/^[[:space:]]*[0-9]\{1,\}\.[0-9]\{1,\}\.[0-9]\{1,\}[[:space:]]*$/ h;${g;p;}')
+rbenv install $RBVER
+rbenv global $RBVER
 
-    exec $SHELL -l
+exec $SHELL -l
