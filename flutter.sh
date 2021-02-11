@@ -1,20 +1,23 @@
 #!/bin/bash
 # Install flutter
+source ./bin/detectos.sh
+
 # ref. https://qiita.com/tomy0610/items/896dc8ec9ba95c33194f
-if [ "$(uname)" == 'Darwin' ]; then
-    if ! type gem >/dev/null 2>&1; then
-        echo "Run ruby.sh first to install gem"
-        exit 1
-    fi
+if [ ! "$OSDIST" = "macos" ]; then
+    echo "Not supported OS."
+    exit 1
+fi
+if type gem >/dev/null 2>&1; then
+    echo "Run ruby.sh first to install gem"
+    exit 1
 fi
 if ! type flutter >/dev/null 2>&1; then
+    echo "Downloading flutter..."
     cd
     curl -L https://storage.googleapis.com/flutter_infra/releases/stable/macos/flutter_macos_1.22.6-stable.zip -o ~/flutter.zip
 
     if ! type unzip /dev/null 2>&1; then
-        if [ "$(expr substr $(uname -s) 1 5)" == 'Linux' ]; then
-            sudo apt get unzip
-        fi
+        brew install unzip
     fi
     DESTDIR="$HOME/development"
     mkdir -p $DESTDIR

@@ -4,3 +4,4 @@
 
 ./nvm-node.sh
 ./kotlin.sh
+./rbenv-ruby.sh

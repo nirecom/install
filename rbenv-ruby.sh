@@ -19,7 +19,10 @@ if ! type rbenv >/dev/null 2>&1; then
             exec $SHELL -l
             ;;
         "macos" )
-            brew install rbenv ruby-build
+            echo "Installing rbenv..."
+            arch -x86_64 /usr/local/bin/brew install rbenv
+            echo "Installing ruby-build..."
+            brew install ruby-build
             ;;
         * )
             echo "Not supported. Skip."
