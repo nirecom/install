@@ -7,7 +7,7 @@ else
     ISWSL=false
 fi
 
-if type arch >/dev/null 2>&1; then
+if [ ""`arch`"" = "arm64" ]; then
     ISM1=true
 else
     ISM1=false
