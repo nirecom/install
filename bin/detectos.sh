@@ -7,6 +7,12 @@ else
     ISWSL=false
 fi
 
+if type arch >/dev/null 2>&1; then
+    ISM1=true
+else
+    ISM1=false
+fi
+
 if [[ "$(uname)" == 'Darwin' ]]; then
     OSDIST=macos
 elif [[ "$(expr substr $(uname -s) 1 5)" == 'Linux' ]]; then

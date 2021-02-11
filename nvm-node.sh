@@ -1,10 +1,12 @@
 #!/bin/bash
+source ./bin/detectos.sh
+
 # Install nvm, node, npm
 # ref. https://qiita.com/sansaisoba/items/242a8ba95bf70ba179d3
 if type nvm >/dev/null 2>&1; then
     echo "nvm is already installed. Skip."
 else
-    if [ "$(uname)" == 'Darwin' ]; then
+    if [ "$OSDIST" = "macos" ]; then
         brew install nvm
         export NVM_DIR="$HOME/.nvm"
         [ -s "/usr/local/opt/nvm/nvm.sh" ] && . "/usr/local/opt/nvm/nvm.sh"  # This loads nvm
