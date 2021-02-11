@@ -18,5 +18,5 @@ if ! type sdk >/dev/null 2>&1; then
     source "$HOME/.sdkman/bin/sdkman-init.sh"
 fi
 
-type kotlin >/dev/null 2>&1 || sdk install kotlin
-type java >/dev/null 2>&1 || sdk install java
+sdk install kotlin
+sdk install java
