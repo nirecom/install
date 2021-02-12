@@ -2,6 +2,7 @@
 # better to install manually
 #xcode-select --install
 
+./anyenv.sh
 ./nvm-node.sh
 ./kotlin.sh
 ./rbenv-ruby.sh

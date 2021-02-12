@@ -20,7 +20,9 @@ if ! type rbenv >/dev/null 2>&1; then
             ;;
         "macos" )
             echo "Installing rbenv..."
-            arch -x86_64 /usr/local/bin/brew install rbenv
+            anyenv install rbenv
+#            arch -x86_64 /usr/local/bin/brew install rbenv
+            exec $SHELL -l
             echo "Installing ruby-build..."
             brew install ruby-build
             ;;
@@ -34,7 +36,10 @@ fi
 # ref. https://mawatari.jp/archives/install-latest-stable-version-of-ruby-using-rbenv
 # note: It did not work well: `rbenv install -l | grep -v - | tail -1`
 RBVER=$(rbenv install -l | sed -n '/^[[:space:]]*[0-9]\{1,\}\.[0-9]\{1,\}\.[0-9]\{1,\}[[:space:]]*$/ h;${g;p;}')
+echo "Installing Ruby: $RBVER... It may take time... "
+#RUBY_BUILD_SKIP_MIRROR=1 rbenv install $RBVER
 rbenv install $RBVER
+echo "Making it global..."
 rbenv global $RBVER
 
 exec $SHELL -l
