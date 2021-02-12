@@ -3,20 +3,16 @@
 if type tfenv >/dev/null 2>&1; then
     echo "tfenv exists. Skip ..."
 else
-#    [ -d ~/.tfenv ] && rm -rf ~/.tfenv
-#    git clone https://github.com/tfutils/tfenv.git ~/.tfenv
-#    #echo 'export PATH="$HOME/.tfenv/bin:$PATH"' >> ~/.bash_profile
+    #    [ -d ~/.tfenv ] && rm -rf ~/.tfenv
+    #    git clone https://github.com/tfutils/tfenv.git ~/.tfenv
+    #    #echo 'export PATH="$HOME/.tfenv/bin:$PATH"' >> ~/.bash_profile
     anyenv install tfenv
 fi
-if type terraform >/dev/null 2>&1; then
-    echo "terraform exists. Skip ..."
-else
-    echo "Installing terraform..."
+echo "Installing terraform..."
 #    sudo apt install -y terraform=0.13.0
-    tfenv install
-    tfenv use latest
+tfenv install
+tfenv use latest
 #    sudo ln -sf ~/.tfenv/bin/* /usr/local/bin
-fi
 
 # Install terraformer
 if type terraformer >/dev/null 2>&1; then
