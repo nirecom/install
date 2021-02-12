@@ -4,8 +4,9 @@ source ./bin/detectos.sh
 # Install node, npm via anyenv
 case "$OSDIST" in
     "macos" )
-        brew install node
         # want to use nodeenv, but M1 mac takes too long to compile
+        #brew install node
+        arch -x86_64 /usr/local/bin/brew install node
         ;;
     "ubuntu" )
         anyenv install nodenv
