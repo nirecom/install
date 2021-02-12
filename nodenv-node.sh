@@ -5,7 +5,7 @@ source ./bin/detectos.sh
 case "$OSDIST" in
     "macos" )
         brew install node
-        # so far M1 mac takes too long with nodenv / nvm, due to full compilation...
+        # want to use nodeenv, but M1 mac takes too long to compile
         ;;
     "ubuntu" )
         anyenv install nodenv
@@ -13,8 +13,8 @@ case "$OSDIST" in
             echo "node is already installed. Skip."
         else
             NODVER=$(nodenv install -l | sed -n '/^[[:space:]]*[0-9]\{1,\}\.[0-9]\{1,\}\.[0-9]\{1,\}[[:space:]]*$/ h;${g;p;}')
-            # 15.8.0 takes too long time to install
-            nodenv install 15.7.0
+            nodenv install $NODVER
+            nodenv global $NODVER
             node -v
         fi
         ;;
