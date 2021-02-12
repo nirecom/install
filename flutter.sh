@@ -24,16 +24,25 @@ if ! type flutter >/dev/null 2>&1; then
     #export PATH="$PATH:$DESTDIR/flutter/bin"
     #rm ~/flutter.zip
 fi
+
+# ref https://flutter.dev/docs/get-started/install/macos
+echo "Installing Xcode ..."
+echo "If it does not work, download Command Line Tools first from: https://developer.apple.com/download/more/"
+sudo xcode-select --switch /Applications/Xcode.app/Contents/Developer
+sudo xcodebuild -runFirstLaunch
+
 echo "Installing CocoaPods for Xcode ..."
 # ref https://qiita.com/ShinokiRyosei/items/3090290cb72434852460
 sudo gem install cocoapods
 pod setup
 
-#sudo xcode-select --switch /Applications/Xcode.app/Contents/Developer
-#sudo xcodebuild -runFirstLaunch
-
 ~/flutter/bin/flutter precache
-# Change channel, otherwise flutter doctor does not detect Android Studio plugin.
-# ref. https://stackoverflow.com/questions/52336654/android-studio-flutter-and-dart-plugins-not-recognized-by-flutter-doctor-but-p
-#flutter channel beta
+
+# Change channel to beta is required, otherwise flutter doctor does not detect Android Studio plugin.
+# ref https://stackoverflow.com/questions/52336654/android-studio-flutter-and-dart-plugins-not-recognized-by-flutter-doctor-but-p
+flutter channel beta
+
+# ref https://stackoverflow.com/questions/61993738/flutter-doctor-android-licenses-gives-a-java-error
+echo "Also Install Android SDK Command-line tools from Android Studio."
+
 ~/flutter/bin/flutter doctor
