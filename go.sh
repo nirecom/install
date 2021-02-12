@@ -16,23 +16,28 @@ case "$OSDIST" in
         export PATH=$PATH:/usr/local/go/bin
         ;;
     "macos" )
-        # goenv supports up to 1.11.4
+        # brew-based goenv supports up to 1.11.4
         #brew install goenv
-        #brew install go
-        if [ ! -d $HOME/.goenv ]; then
-            echo "Installing goenv..."
-            git clone https://github.com/syndbg/goenv.git ~/.goenv
-        fi
-        # env settings are in .dotfiles/.profiles_common
-        echo "Setting goenv variables..."
-        export GOENV_ROOT="$HOME/.goenv"
-        eval "$(goenv init -)"
+
+#        if [ ! -d $HOME/.goenv ]; then
+#            echo "Installing goenv..."
+#            git clone https://github.com/syndbg/goenv.git ~/.goenv
+#        fi
+#        # env settings are in .dotfiles/.profiles_common
+#        echo "Setting goenv variables..."
+#        export GOENV_ROOT="$HOME/.goenv"
+#        eval "$(goenv init -)"
+
+        anyenv install goenv
+
         echo "Install go..."
         if "$ISM1"; then
-            goenv install 1.16beta1
+            INSTALLGO=1.16beta1
         else
-            goenv install 1.15.7
+            INSTALLGO=1.15.7
         fi
+        goenv install $INSTALLGO
+        goenv global $INSTALLGO
         exec $SHELL -l
         ;;
     * )
