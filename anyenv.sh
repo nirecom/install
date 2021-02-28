@@ -21,16 +21,21 @@ case "$OSDIST" in
     "amazon" )
         # ref https://caramelcase.com/aws-anyanv-rubyenv-nodenv/#toc4
         cd /usr/local
-        sudo git clone https://github.com/anyenv/anyenv
+        if [ ! -d /usr/local/anyenv ]; then
+            sudo git clone https://github.com/anyenv/anyenv
+        fi
         sudo chgrp -R wheel anyenv
         sudo chmod -R g+rwxXs anyenv
         cd /etc/profile.d/
-        cat <<EOF >anyenv.sh
+        if [ ! -f /etc/profile.d/anyenv.sh ]; then
+            echo "Installing /etc/profile.d/anyenv.sh..."
+            sudo sh -c '<<EOF >anyenv.sh
 export ANYENV_ROOT="/usr/local/anyenv"
 export ANYENV_DEFINITION_ROOT="/usr/local/anyenv/share/anyenv-install"
 export PATH="${ANYENV_ROOT}/bin:${PATH}"
 eval "$(anyenv init --no-rehash -)"
-EOF
+EOF'
+        fi
         anyenv install --init
         exec $SHELL -l
         ;;
