@@ -17,7 +17,7 @@ else
                 echo "Run with user: ubuntu. Abort."
                 exit 1
             fi
-            break ;;
+            ;;
         "amazon" )
             if [ `whoami` != "ec2-user" ]; then
                 echo "Run with user: ec2-user. Abort."
@@ -43,7 +43,6 @@ case "$OSDIST" in
             sudo cp -pr ~/.ssh /home/$USERNAME/
             sudo chown -R $USERNAME:$USERNAME /home/$USERNAME/.ssh/
         fi
-        break
         ;;
     "amazon" )
         sudo yum -y update
