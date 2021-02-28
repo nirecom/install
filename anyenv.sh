@@ -29,7 +29,7 @@ case "$OSDIST" in
         cd /etc/profile.d/
         if [ ! -f /etc/profile.d/anyenv.sh ]; then
             echo "Installing /etc/profile.d/anyenv.sh..."
-            sudo sh -c '<<EOF >anyenv.sh
+            sudo sh -c 'cat <<EOF >anyenv.sh
 export ANYENV_ROOT="/usr/local/anyenv"
 export ANYENV_DEFINITION_ROOT="/usr/local/anyenv/share/anyenv-install"
 export PATH="${ANYENV_ROOT}/bin:${PATH}"
