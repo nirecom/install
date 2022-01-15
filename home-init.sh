@@ -15,6 +15,7 @@ fi
 # Install aws cli
 ~/install/awscli.sh
 ~/install/dotfiles.sh
+~/install/anyenv.sh
 ~/install/zsh.sh
 ~/install/git-completion.sh
 ~/install/vim.sh

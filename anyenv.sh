@@ -12,7 +12,7 @@ case "$OSDIST" in
     "macos" )
         brew install anyenv
         eval "$(anyenv init -)"
-        ~/.anyenv/bin/anyenv install --init
+        anyenv install --init
         ;;
     "ubuntu" )
         if [ ! -d ~/.anyenv ]; then
