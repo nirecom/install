@@ -3,8 +3,8 @@
 #xcode-select --install
 
 ./anyenv.sh
-./nvm-node.sh
-./kotlin.sh
+./nodenv-node.sh
+#./kotlin.sh
 ./rbenv-ruby.sh
 
 echo "Run flutter.sh later, since it requires installation of Android Studio and Android SDK command line tools."
