@@ -42,7 +42,8 @@ else
 fi
 
 if [ -d $(anyenv root)/plugins/anyenv-update ]; then
-    echo "anyenv-update is already installed. Skip."
+    echo "anyenv-update is already installed. Updating..."
+    anyenv update
     exit 1
 else
     echo "Installing anyenv-update..."

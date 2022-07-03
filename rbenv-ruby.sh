@@ -23,8 +23,9 @@ if ! type rbenv >/dev/null 2>&1; then
             anyenv install rbenv
 #            arch -x86_64 /usr/local/bin/brew install rbenv
             exec $SHELL -l
-            echo "Installing ruby-build..."
-            brew install ruby-build
+            # ruby-build comes with anyenv?
+#            echo "Installing ruby-build..."
+#            brew install ruby-build
             ;;
         * )
             echo "Not supported. Skip."
