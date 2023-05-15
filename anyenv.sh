@@ -5,7 +5,7 @@ source ./bin/detectos.sh
 if type anyenv >/dev/null 2>&1; then
     echo "anyenv is already installed. Skip."
 else
-    echo "Installing anyenv...OSDIST=$OSDIST"
+    echo "Installing anyenv..."
 
     case "$OSDIST" in
         "macos" )
@@ -33,7 +33,7 @@ else
             if [ ! -f anyenv.sh ]; then
                 sudo cp -p ~/install/anyenv-profile.sh anyenv.sh
                 sudo chown root.wheel anyenv.sh
-                exec $SHELL -l
+                . anyenv.sh
             fi
             echo "Running anyenv install --init..."
             anyenv install --init
