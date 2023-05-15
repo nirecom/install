@@ -33,7 +33,8 @@ else
                 sudo chown root.wheel anyenv.sh
                 exec $SHELL -l
             fi
-            /usr/local/anyenv/bin/anyenv install --init
+            echo "Running anyenv install --init..."
+            anyenv install --init
             exec $SHELL -l
             ;;
         * )
