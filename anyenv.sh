@@ -5,7 +5,7 @@ source ./bin/detectos.sh
 if type anyenv >/dev/null 2>&1; then
     echo "anyenv is already installed. Skip."
 else
-    echo "Installing anyenv..."
+    echo "Installing anyenv...OSDIST=$OSDIST"
 
     case "$OSDIST" in
         "macos" )
@@ -23,10 +23,12 @@ else
             # ref https://caramelcase.com/aws-anyanv-rubyenv-nodenv/#toc4
             cd /usr/local
             if [ ! -d /usr/local/anyenv ]; then
+                echo "Cloning anyenv from github..."
                 sudo git clone https://github.com/anyenv/anyenv
             fi
             sudo chgrp -R wheel anyenv
             sudo chmod -R g+rwxXs anyenv
+            echo "Installing anyenv initialization script..."
             cd /etc/profile.d/
             if [ ! -f anyenv.sh ]; then
                 sudo cp -p ~/install/anyenv-profile.sh anyenv.sh
