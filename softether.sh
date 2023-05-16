@@ -6,13 +6,15 @@ case "$OSDIST" in
     "amazon" )
         sudo yum update
         sudo yum install gcc
+        cd
         wget https://jp.softether-download.com/files/softether/v4.41-9787-rtm-2023.03.14-tree/Linux/SoftEther_VPN_Server/64bit_-_ARM_64bit/softether-vpnserver-v4.41-9787-rtm-2023.03.14-linux-arm64-64bit.tar.gz
+        tar zxvf softether-vpnserver-v4.41-9787-rtm-2023.03.14-linux-arm64-64bit.tar.gz
         cd vpnserver
         make
         cd ..
         sudo mv vpnserver /opt
         sudo chown root:root -R /opt/vpnserver
-        cat <<EOL >>/etc/systemd/system/vpnserver.service
+        sudo cat <<EOL >>/etc/systemd/system/vpnserver.service
 [Unit]
 Description=SoftEther VPN Server Service
 After=network.target
