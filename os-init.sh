@@ -53,6 +53,8 @@ case "$OSDIST" in
             sudo usermod -G wheel $USERNAME
             sudo cp -pr ~/.ssh /home/$USERNAME/
             sudo chown -R $USERNAME:$USERNAME /home/$USERNAME/.ssh/
+            echo "Set password of $USERNAME..."
+            sudo passwd $USERNAME
         fi
 esac
 
