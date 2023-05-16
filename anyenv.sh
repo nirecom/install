@@ -33,11 +33,11 @@ else
             if [ ! -f anyenv.sh ]; then
                 sudo cp -p ~/install/anyenv-profile.sh anyenv.sh
                 sudo chown root.wheel anyenv.sh
-                . anyenv.sh
+                source anyenv.sh
             fi
             echo "Running anyenv install --init..."
-            anyenv install --init
-            exec $SHELL -l
+            /usr/local/anyenv/bin/anyenv install --init
+#            exec $SHELL -l
             ;;
         * )
             echo "Not supported OS."
