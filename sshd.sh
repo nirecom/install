@@ -1,7 +1,7 @@
 #!/bin/bash
 source ./bin/detectos.sh
 
-if [ "$OSDIST" = "mingw" ] || [ "$OSDIST" = "macos" ] || "$ISWSL"; then
+if [ "$OSDIST" = "mingw" ] || [ "$OSDIST" = "macos" ] || [ -n "${ISWSL:-}" ]; then
     echo "Not necessary to configure /etc/sshd_config because it's client. Abort."
     exit 1
 fi

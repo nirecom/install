@@ -4,27 +4,19 @@ source ./bin/detectos.sh
 
 # Check current user name
 USERNAME=nire
-if "$ISWSL"; then
-    if [ `whoami` != $USERNAME ]; then
-        echo "It's WSL environment."
-        echo "Run with user: $USERNAME. Abort."
-        exit 1
-    fi
-else
-    case "$OSDIST" in
-        "ubuntu" )
-            if [ `whoami` != "ubuntu" ]; then
-                echo "Run with user: ubuntu. Abort."
-                exit 1
-            fi
-            ;;
-        "amazon" )
-            if [ `whoami` != "ec2-user" ]; then
-                echo "Run with user: ec2-user. Abort."
-                exit 1
-            fi
-    esac
-fi
+case "$OSDIST" in
+    "ubuntu" )
+        if [ `whoami` != "ubuntu" ]; then
+            echo "Run with user: ubuntu. Abort."
+            exit 1
+        fi
+        ;;
+    "amazon" )
+        if [ `whoami` != "ec2-user" ]; then
+            echo "Run with user: ec2-user. Abort."
+            exit 1
+        fi
+esac
 
 # Update Packages, Create $USERNAME
 case "$OSDIST" in
@@ -36,7 +28,7 @@ case "$OSDIST" in
             sudo timedatectl set-timezone Asia/Tokyo
         fi
         ./sshd.sh
-        if ! $ISWSL && ! getent passwd $USERNAME >/dev/null 2>&1; then
+        if ! getent passwd $USERNAME >/dev/null 2>&1; then
             echo "Creating user $USERNAME ..."
             sudo adduser $USERNAME
             sudo gpasswd -a $USERNAME sudo
