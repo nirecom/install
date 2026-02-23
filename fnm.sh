@@ -8,7 +8,8 @@ if command -v fnm &> /dev/null; then
   echo "fnm is already installed: $(fnm --version)"
 else
   echo "Installing fnm..."
-  curl -fsSL https://fnm.vercel.app/install | bash -s -- --skip-shell
+  # Install scripts does rehash, but zsh does not support it. Avoiding unexpected abort with '|| true'
+  curl -fsSL https://fnm.vercel.app/install | bash -s -- --skip-shell || true
   # --skip-shell: dotfiles/.profile_common handles shell setup
 fi
 
