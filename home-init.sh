@@ -19,7 +19,6 @@ fi
 ~/install/zsh.sh
 ~/install/git-completion.sh
 ~/install/vim.sh
-#~/install/emacs.sh
 ~/install/tmux.sh
 # source-highlight.sh must come to the end, since it reloads shell
 ~/install/source-highlight.sh
