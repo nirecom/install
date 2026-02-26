@@ -31,3 +31,9 @@ if [ -d $HOME/.emacs.d/elpa/js-react-redux-yasnippets-20200316.1144 ]; then
     echo "js-react-redux-yasnippets exists. Removing..."
     rm -rf $HOME/.emacs.d/elpa/js-react-redux-yasnippets-20200316.1144
 fi
+
+if [ -d $HOME/.tfenv ]; then
+    echo "tfenv exists. Removing... (Replaced by tenv)"
+    rm -rf $HOME/.tfenv
+    sudo rm -f /usr/local/bin/tfenv /usr/local/bin/terraform
+fi

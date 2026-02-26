@@ -1,18 +1,15 @@
 #!/bin/bash
+source ./bin/detectos.sh
 
-if type tfenv >/dev/null 2>&1; then
-    echo "tfenv exists. Skip ..."
+# Install tenv (version manager for Terraform/OpenTofu/Terragrunt)
+if type tenv >/dev/null 2>&1; then
+    echo "tenv exists. Skip ..."
 else
-    #    [ -d ~/.tfenv ] && rm -rf ~/.tfenv
-    #    git clone https://github.com/tfutils/tfenv.git ~/.tfenv
-    #    #echo 'export PATH="$HOME/.tfenv/bin:$PATH"' >> ~/.bash_profile
-    anyenv install tfenv
+    brew install tenv
 fi
 echo "Installing terraform..."
-#    sudo apt install -y terraform=0.13.0
-tfenv install
-tfenv use latest
-#    sudo ln -sf ~/.tfenv/bin/* /usr/local/bin
+tenv terraform install latest
+tenv terraform use latest
 
 # Install terraformer
 if type terraformer >/dev/null 2>&1; then
