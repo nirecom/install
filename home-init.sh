@@ -14,6 +14,7 @@ fi
 ~/install/brew-git.sh
 # Install aws cli
 ~/install/awscli.sh
+~/install/keychain.sh
 ~/install/dotfiles.sh
 ~/install/anyenv.sh
 ~/install/zsh.sh
